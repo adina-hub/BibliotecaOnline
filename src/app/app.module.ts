@@ -9,8 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { AcasaComponent } from './biblioteca/acasa/acasa.component';
 import { ImprumutComponent } from './biblioteca/imprumut/imprumut.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CategorieComponent } from './biblioteca/imprumut/categorii/categorie/categorie.component';
-import { CategoriiComponent } from './biblioteca/imprumut/categorii/categorii.component';
+import { CarteComponent } from './biblioteca/imprumut/carte/carte.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import { CategoriiComponent } from './biblioteca/imprumut/categorii/categorii.co
     HeaderComponent,
     AcasaComponent,
     ImprumutComponent,
-    CategorieComponent,
-    CategoriiComponent
+    CarteComponent,
   ],
   imports: [
     BrowserModule,

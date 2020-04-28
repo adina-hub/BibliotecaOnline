@@ -11,9 +11,10 @@ import {FormArray, FormControl, FormGroup} from '@angular/forms';
 })
 export class ImprumutComponent implements OnInit {
   categorii: { nume: string }[];
-  categorieCurenta: string;
   carti: Carte[];
   imprumutForm: FormGroup;
+  categorieCurenta: string;
+  totalCarti = 1;
   constructor(private authService: AuthService,
               private bibliotecaService: BibliotecaService) {
   }
@@ -23,24 +24,29 @@ export class ImprumutComponent implements OnInit {
     this.categorii = this.bibliotecaService.getCategorii();
     this.categorieCurenta = this.categorii[0].nume;
     this.imprumutForm = new FormGroup({
-      categorie: new FormControl(this.categorii[0]),
-      titlu: new FormControl(this.filtrareCarti(this.categorieCurenta)[0])
+     cartiForms: new FormArray([this.initForm()])
     });
-    this.onChanges();
   }
 
   filtrareCarti(categorie: string) {
     const cartiFiltrate = [...this.carti.filter(carte => carte.categoria === categorie)];
     return cartiFiltrate;
   }
-  onChanges(): void {
-    this.imprumutForm.controls.categorie.valueChanges.subscribe(val => {
-      this.categorieCurenta = val.nume;
-      const index = this.categorii.findIndex(categorie => categorie.nume === this.categorieCurenta);
-      this.imprumutForm = new FormGroup({
-        categorie: new FormControl(this.categorii[index]),
-        titlu: new FormControl(this.filtrareCarti(this.categorieCurenta)[0])
-      });
+
+  initForm(){
+    return new FormGroup({
+      categorie: new FormControl(this.categorii[0]),
+      titlu: new FormControl(this.filtrareCarti(this.categorieCurenta)[0])
     });
+  }
+
+  formData(form){
+    return form.get('cartiForms');
+  }
+
+  adaugaCarte(){
+    this.totalCarti += 1;
+    const control = this.imprumutForm.get('cartiForms') as FormArray;
+    control.push(this.initForm());
   }
 }

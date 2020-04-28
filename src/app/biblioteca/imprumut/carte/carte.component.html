@@ -1,0 +1,16 @@
+<div [formGroup]="carteForm" class="carteForm">
+  <div class="form-group categorii">
+    <label for="categoria">Categoria</label>
+    <select class="form-control" id="categoria" (change)="onChanges()" formControlName="categorie">
+      <option *ngFor="let categorie of categorii; " [ngValue]="categorie">{{categorie.nume}}</option>
+    </select>
+  </div>
+  <div class="form-group titlu">
+    <label for="titlu">Titlu</label>
+    <select class="form-control" id="titlu" formControlName="titlu">
+      <option  *ngFor="let carte of filtrareCarti(categorieCurenta)" [ngValue]="carte">{{carte.titlu}}</option>
+    </select>
+  </div>
+  <button type="button" *ngIf="totalCarti > 1" class="btn btn-danger sterge">Sterge</button>
+</div>
+

@@ -5,18 +5,16 @@
     cilis ipsum magni odit officia omnis porro repellat sim
     ilique soluta ut veniam voluptatibus. Molestias, soluta?
   </p>
-  <form [formGroup]="imprumutForm" class="imprumutForm" >
-    <div class="form-group categorii">
-      <label for="categoria">Categoria</label>
-      <select class="form-control" id="categoria" (change)="onChanges()" formControlName="categorie">
-        <option *ngFor="let categorie of categorii; " [ngValue]="categorie">{{categorie.nume}}</option>
-      </select>
+  <form [formGroup]="imprumutForm">
+    <div formArrayName="cartiForms" class="imprumutForm" >
+      <div class="carteForm" *ngFor="let carteForm of formData(imprumutForm).controls">
+        <app-carte [carteForm]="carteForm"
+                   [carti]="carti"
+                   [categorii]="categorii"
+                   [categorieCurenta]="categorieCurenta"
+                   [totalCarti]="totalCarti"></app-carte>
+      </div>
     </div>
-    <div class="form-group titlu">
-      <label for="titlu">Titlu</label>
-      <select class="form-control" id="titlu" formControlName="titlu">
-        <option  *ngFor="let carte of filtrareCarti(categorieCurenta)" [ngValue]="carte">{{carte.titlu}}</option>
-      </select>
-    </div>
+    <button *ngIf="totalCarti < 3" (click)="adaugaCarte()">Adauga Carte</button>
   </form>
 </div>

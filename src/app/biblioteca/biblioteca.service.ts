@@ -23,7 +23,7 @@ export class BibliotecaService {
         img: '../../../assets/images/Carti/actiune2.jpg'
       },
       { isbn: '978-606-33-3606-5',
-        titlu: 'Hotul De Papoi',
+        titlu: 'Amintiri din copilarie',
         autor: 'Koala Bear',
         categoria: 'Comedie',
         img: '../../../assets/images/Carti/actiune2.jpg'
