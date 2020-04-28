@@ -7,6 +7,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { AcasaComponent } from './biblioteca/acasa/acasa.component';
+import { ImprumutComponent } from './biblioteca/imprumut/imprumut.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CategorieComponent } from './biblioteca/imprumut/categorii/categorie/categorie.component';
+import { CategoriiComponent } from './biblioteca/imprumut/categorii/categorii.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,16 @@ import { AcasaComponent } from './biblioteca/acasa/acasa.component';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    AcasaComponent
+    AcasaComponent,
+    ImprumutComponent,
+    CategorieComponent,
+    CategoriiComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,22 @@
+<div class="imprumutPage">
+  <h1>Imprumuta o carte</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisic
+    ing elit. A alias aperiam aut, cumque deserunt enim fa
+    cilis ipsum magni odit officia omnis porro repellat sim
+    ilique soluta ut veniam voluptatibus. Molestias, soluta?
+  </p>
+  <form [formGroup]="imprumutForm" class="imprumutForm" >
+    <div class="form-group categorii">
+      <label for="categoria">Categoria</label>
+      <select class="form-control" id="categoria" (change)="onChanges()" formControlName="categorie">
+        <option *ngFor="let categorie of categorii; " [ngValue]="categorie">{{categorie.nume}}</option>
+      </select>
+    </div>
+    <div class="form-group titlu">
+      <label for="titlu">Titlu</label>
+      <select class="form-control" id="titlu" formControlName="titlu">
+        <option  *ngFor="let carte of filtrareCarti(categorieCurenta)" [ngValue]="carte">{{carte.titlu}}</option>
+      </select>
+    </div>
+  </form>
+</div>

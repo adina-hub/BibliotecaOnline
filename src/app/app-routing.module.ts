@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {AcasaComponent} from './biblioteca/acasa/acasa.component';
+import {ImprumutComponent} from './biblioteca/imprumut/imprumut.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'acasa', component: AcasaComponent},
+  {path: 'imprumuta',  component: ImprumutComponent}
 ];
 
 @NgModule({

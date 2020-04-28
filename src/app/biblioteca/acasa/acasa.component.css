@@ -1,3 +1,27 @@
 .homePage{
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.7);
+  width: 50%;
+  margin: 0 auto;
+  color: white;
+  padding: 40px 35px;
+}
+
+.category h3{
+  font-size: 1.4em;
+  padding: 20px;
+}
+
+.categoryImg{
+  display: flex;
+  background: rgba(256,256,256,0.4);
+  padding: 20px;
+}
+
+.categoryImg img{
+  width: 100px;
+  height: 120px;
+}
+
+.categoryImgItem img{
+  margin-left: 20px;
 }
