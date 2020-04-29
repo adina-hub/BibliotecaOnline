@@ -1,0 +1,28 @@
+nav{
+  background: rgba(0,0,0,0.85);
+  margin: 0 auto;
+  width: 50%;
+  height: 40px;
+}
+
+nav a{
+  color:white;
+}
+
+nav a:hover{
+  color: navajowhite;
+}
+
+nav .nav-link{
+  padding: 8px 8px;
+}
+
+.right {
+  margin-right: 35px;
+}
+
+
+
+
+
+

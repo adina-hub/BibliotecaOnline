@@ -4,6 +4,8 @@ import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {AcasaComponent} from './biblioteca/acasa/acasa.component';
 import {ImprumutComponent} from './biblioteca/imprumut/imprumut.component';
+import {ListaComponent} from './biblioteca/lista/lista.component';
+import {ContactComponent} from './biblioteca/contact/contact.component';
 
 
 const routes: Routes = [
@@ -11,7 +13,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'acasa', component: AcasaComponent},
-  {path: 'imprumuta',  component: ImprumutComponent}
+  {path: 'imprumuta',  component: ImprumutComponent},
+  {path: 'listaMea', component: ListaComponent},
+  {path: 'contact', component: ContactComponent}
 ];
 
 @NgModule({

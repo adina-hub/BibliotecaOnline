@@ -10,6 +10,9 @@ import { AcasaComponent } from './biblioteca/acasa/acasa.component';
 import { ImprumutComponent } from './biblioteca/imprumut/imprumut.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CarteComponent } from './biblioteca/imprumut/carte/carte.component';
+import { ListaComponent } from './biblioteca/lista/lista.component';
+import { ContactComponent } from './biblioteca/contact/contact.component';
+import { UpperHeaderComponent } from './upper-header/upper-header.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { CarteComponent } from './biblioteca/imprumut/carte/carte.component';
     AcasaComponent,
     ImprumutComponent,
     CarteComponent,
+    ListaComponent,
+    ContactComponent,
+    UpperHeaderComponent,
   ],
   imports: [
     BrowserModule,

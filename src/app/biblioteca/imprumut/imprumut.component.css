@@ -9,5 +9,17 @@
   text-align: center;
 }
 
+.imprumutPage p{
+  max-width: 780px;
+  margin: 20px auto;
+}
+
+hr{
+  width: 400px;
+  height: 1px;
+  background-color: white;
+  margin: auto;
+}
+
 
 

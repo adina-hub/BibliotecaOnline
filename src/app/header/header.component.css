@@ -1,10 +1,9 @@
-
-
 nav{
   background: rgba(0,0,0,0.85);
   margin: 0 auto;
   width: 50%;
 }
+
 nav a{
   color:white;
 }
@@ -16,7 +15,9 @@ nav a.navbar-brand:hover{
   color:white;
 }
 
-
+nav a.navbar-brand{
+  font-family: 'Roboto', serif;
+}
 
 .navbar-nav{
   flex-direction: row;
@@ -24,6 +25,7 @@ nav a.navbar-brand:hover{
 .navbar-nav li{
   font-size: 1.3em;
   margin-left: 50px;
+  font-family: 'Roboto', serif;
 }
 .navbar-nav li:last-child{
   margin-right: 50px;

@@ -1,0 +1,13 @@
+<div class="contactPage">
+  <h1>Contact</h1>
+  <hr>
+  <form class="contactForm">
+    <p class="user">Nume</p>
+    <input class="userInput" #nume type="text">
+    <p class="user">Subiect</p>
+    <input class="userInput" #subiect type="text">
+    <p class="user">Mesaj</p>
+    <textarea class="messageInput" #input></textarea>
+  </form>
+  <button id="trimiteMesaj" (click)="displayMessage(input.value,nume.value,subiect.value)">Trimite</button>
+</div>

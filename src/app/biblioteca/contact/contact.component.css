@@ -1,0 +1,38 @@
+.contactPage{
+  background: rgba(0,0,0,0.7);
+  width: 50%;
+  margin: 0 auto;
+  color: white;
+  padding: 40px 35px;
+}
+
+.contactPage h1{
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.contactForm{
+  margin: 50px 80px;
+}
+
+hr{
+  width: 160px;
+  height: 1px;
+  background-color: white;
+  margin: auto;
+}
+
+.userInput{
+  margin-bottom: 15px;
+  width: 200px;
+}
+
+.messageInput{
+  width: 700px;
+  height: 200px;
+}
+
+#trimiteMesaj{
+  margin: 10px 400px;
+  width: 80px;
+}
