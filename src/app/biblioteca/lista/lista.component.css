@@ -22,7 +22,6 @@ hr{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 25px 30px;
   padding: 0 20px;
   list-style-type: none;
   background: rgba(192,192,192,0.5);
@@ -32,7 +31,6 @@ hr{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 10px 30px;
   padding: 0 20px;
   list-style-type: none;
   background: rgba(255,255,255,0.7);
@@ -45,3 +43,6 @@ hr{
   color: black;
 }
 
+.dataImprumut{
+  padding-right: 40px;
+}

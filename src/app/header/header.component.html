@@ -1,3 +1,7 @@
+<nav class="navbar justify-content-between">
+  <a class="nav-link" routerLink="/acasa">Bine ai venit, user</a>
+  <button class="nav-link right logout" (click)="logout()">Delogare</button>
+</nav>
 <nav class="navbar ">
   <a class="navbar-brand" routerLink="/acasa">
     <img src="../../assets/images/logo.png" width="35" height="35" class="d-inline-block align-top" alt="">
@@ -5,16 +9,16 @@
   </a>
   <ul class="navbar-nav ml-auto">
     <li class="nav-item active">
-      <a class="nav-link" routerLink="/acasa" >Acasa</a>
+      <a class="nav-link" routerLink="/acasa" routerLinkActive="active-link" >Acasa</a>
     </li>
     <li class="nav-item active">
-      <a class="nav-link" routerLink="/imprumuta">Imprumuta</a>
+      <a class="nav-link" routerLink="/imprumuta" routerLinkActive="active-link">Imprumuta</a>
     </li>
     <li class="nav-item active">
-      <a class="nav-link" routerLink="/listaMea">Lista mea</a>
+      <a class="nav-link" routerLink="/listaMea" routerLinkActive="active-link">Lista mea</a>
     </li>
     <li class="nav-item active">
-      <a class="nav-link" routerLink="/contact">Contacteaza-ne</a>
+      <a class="nav-link" routerLink="/contact" routerLinkActive="active-link">Contacteaza-ne</a>
     </li>
   </ul>
 </nav>

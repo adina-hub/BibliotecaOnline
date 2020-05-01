@@ -4,11 +4,14 @@ nav{
   width: 50%;
 }
 
-nav a{
+.nav-link, .navbar-brand{
   color:white;
 }
 
-nav a:hover{
+nav .nav-link:hover{
+  color: navajowhite;
+}
+.active-link{
   color: navajowhite;
 }
 nav a.navbar-brand:hover{
@@ -30,4 +33,21 @@ nav a.navbar-brand{
 .navbar-nav li:last-child{
   margin-right: 50px;
 }
+
+
+.right {
+  margin-right: 35px;
+}
+.logout{
+  background: transparent;
+  border: none;
+}
+.logout:focus{
+  outline: none ;
+}
+
+
+
+
+
 

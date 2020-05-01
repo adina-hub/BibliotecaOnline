@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
@@ -12,6 +12,7 @@ export class CarteComponent implements OnInit {
   @Input() categorii;
   @Input() categorieCurenta;
   @Input() totalCarti;
+  @Output() stergeCarteId = new EventEmitter();
   constructor() { }
   ngOnInit(): void {
     this.onChanges();
@@ -19,16 +20,14 @@ export class CarteComponent implements OnInit {
   onChanges(): void {
     this.carteForm.controls.categorie.valueChanges.subscribe(val => {
       this.categorieCurenta = val.nume;
-      const index = this.categorii.findIndex(categorie => categorie.nume === this.categorieCurenta);
-      this.carteForm = new FormGroup({
-        categorie: new FormControl(this.categorii[index]),
-        titlu: new FormControl(this.filtrareCarti(this.categorieCurenta)[0])
-      });
+      this.carteForm.controls.carte.setValue(this.filtrareCarti(this.categorieCurenta)[0]);
     });
   }
   filtrareCarti(categorie: string) {
     const cartiFiltrate = [...this.carti.filter(carte => carte.categoria === categorie)];
     return cartiFiltrate;
   }
-
+  stergeCarte(id: number){
+      this.stergeCarteId.emit(id);
+  }
 }

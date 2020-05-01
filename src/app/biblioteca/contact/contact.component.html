@@ -1,13 +1,15 @@
 <div class="contactPage">
   <h1>Contact</h1>
   <hr>
-  <form class="contactForm">
-    <p class="user">Nume</p>
-    <input class="userInput" #nume type="text">
-    <p class="user">Subiect</p>
-    <input class="userInput" #subiect type="text">
-    <p class="user">Mesaj</p>
-    <textarea class="messageInput" #input></textarea>
+  <form class="contactForm" [formGroup]="contactForm" (submit)="trimite()">
+    <div class="form-group">
+      <label for="subiect">Subiect</label>
+      <input formControlName="subiect" type="text" class="form-control" id="subiect">
+    </div>
+    <div class="form-group">
+      <label for="mesaj">Mesaj</label>
+      <textarea formControlName="mesaj" class="form-control" id="mesaj" rows="4"></textarea>
+    </div>
+    <button class="btn btn-info" id="trimiteMesaj" type="submit">Trimite</button>
   </form>
-  <button id="trimiteMesaj" (click)="displayMessage(input.value,nume.value,subiect.value)">Trimite</button>
 </div>

@@ -27,12 +27,15 @@ hr{
   width: 200px;
 }
 
-.messageInput{
-  width: 700px;
-  height: 200px;
+#subiect{
+  width: 30%;
+}
+#trimiteMesaj{
+  display: block;
+  width: 30%;
+  margin: 20px auto;
 }
 
-#trimiteMesaj{
-  margin: 10px 400px;
-  width: 80px;
-}
+
+
+

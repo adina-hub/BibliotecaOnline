@@ -8,14 +8,15 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  // authStatus = false;
-  // authStatusListener: Subscription;
+  authStatus = false;
+  authStatusListener: Subscription;
   constructor(private authService: AuthService){}
 
   ngOnInit(): void {
-    // this.authStatusListener = this.authService.getAuthStatusListener()
-    //   .subscribe((authStatus) => {
-    //     this.authStatus = authStatus;
-    //   });
+    this.authStatus = this.authService.getAuthStatus();
+    this.authStatusListener = this.authService.getAuthStatusListener()
+      .subscribe((authStatus) => {
+        this.authStatus = authStatus;
+      });
   }
 }

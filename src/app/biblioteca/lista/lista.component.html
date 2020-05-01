@@ -4,22 +4,13 @@
   <ul class="tabel">
     <li>Id</li>
     <li>Titlu</li>
-    <li>Timp ramas</li>
-    <li>Intarziere</li>
-    <li>Predata</li>
+    <li>Data Imprumut</li>
+    <li>Data Retur</li>
   </ul>
-  <ul class="tableRow">
-    <li>1</li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-  <ul class="tableRow">
-    <li>2</li>
-    <li><li>
-    <li></li>
-    <li></li>
-    <li></li>
+  <ul class="tableRow" *ngFor="let carte of listaCarti">
+    <li>{{carte.id + 1}}</li>
+    <li>{{carte.titlu}}</li>
+    <li class="dataImprumut">{{carte.dataImprumut.toLocaleDateString()}}</li>
+    <li>{{carte.dataRetur.toLocaleDateString()}}</li>
   </ul>
 </div>

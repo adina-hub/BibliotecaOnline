@@ -1,5 +1,4 @@
 <div class="containeruMeu">
-  <app-upper-header></app-upper-header>
-  <app-header></app-header>
+  <app-header *ngIf="authStatus"></app-header>
   <router-outlet></router-outlet>
 </div>

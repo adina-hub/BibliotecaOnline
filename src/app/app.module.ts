@@ -12,7 +12,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CarteComponent } from './biblioteca/imprumut/carte/carte.component';
 import { ListaComponent } from './biblioteca/lista/lista.component';
 import { ContactComponent } from './biblioteca/contact/contact.component';
-import { UpperHeaderComponent } from './upper-header/upper-header.component';
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -25,13 +26,13 @@ import { UpperHeaderComponent } from './upper-header/upper-header.component';
     CarteComponent,
     ListaComponent,
     ContactComponent,
-    UpperHeaderComponent,
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,10 +7,13 @@
   </div>
   <div class="form-group titlu">
     <label for="titlu">Titlu</label>
-    <select class="form-control" id="titlu" formControlName="titlu">
+    <select class="form-control" id="titlu" formControlName="carte">
       <option  *ngFor="let carte of filtrareCarti(categorieCurenta)" [ngValue]="carte">{{carte.titlu}}</option>
     </select>
   </div>
-  <button type="button" *ngIf="totalCarti > 1" class="btn btn-danger sterge">Sterge</button>
+  <button type="button"
+          *ngIf="totalCarti  > 1"
+          (click)="stergeCarte(carteForm.controls.id.value)"
+          class="btn btn-danger sterge">Sterge</button>
 </div>
 

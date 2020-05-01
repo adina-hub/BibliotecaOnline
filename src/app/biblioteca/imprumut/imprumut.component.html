@@ -6,16 +6,18 @@
     Împrumutul se face automat pe o perioadă de 2 săptămâni, având posibilitatea unei prelungiri dacă e cazul în secțiunea
     "Lista mea" a paginii.
   </p>
-  <form [formGroup]="imprumutForm">
+  <form [formGroup]="imprumutForm" (submit)="finalizareImprumut()">
     <div formArrayName="cartiForms" class="imprumutForm" >
-      <div class="carteForm" *ngFor="let carteForm of formData(imprumutForm).controls">
-        <app-carte [carteForm]="carteForm"
+      <div class="carteForm" *ngFor="let carteForm of formData(imprumutForm).controls;">
+        <app-carte (stergeCarteId)="stergeCarte($event)" [carteForm]="carteForm"
                    [carti]="carti"
                    [categorii]="categorii"
                    [categorieCurenta]="categorieCurenta"
-                   [totalCarti]="totalCarti"></app-carte>
+                   [totalCarti]="totalCarti"
+                    ></app-carte>
       </div>
     </div>
-    <button *ngIf="totalCarti < 3" (click)="adaugaCarte()">Adauga Carte</button>
+    <button class="btn btn-secondary" type="button" *ngIf="totalCarti < 3" (click)="adaugaCarte()">Adauga Carte</button>
+    <button class="btn btn-dark submit" type="submit">Finalizare Imprumut</button>
   </form>
 </div>

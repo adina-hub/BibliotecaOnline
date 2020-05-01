@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {BibliotecaService} from '../biblioteca.service';
 
 @Component({
   selector: 'app-contact',
@@ -6,14 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-
-  constructor() { }
+  contactForm: FormGroup;
+  constructor(private bibliotecaService: BibliotecaService) { }
 
   ngOnInit(): void {
+    this.contactForm = new FormGroup({
+      subiect: new FormControl(''),
+      mesaj: new FormControl('')
+    });
   }
-
-  displayMessage(input: string, nume: string, subiect: string){
-    console.log('Nume: ' + nume + ' Subiect: ' + subiect + ' Mesaj: ' + input);
+  trimite(){
+    this.bibliotecaService.trimiteMesaj(this.contactForm.value);
+    this.contactForm.reset();
   }
 
 

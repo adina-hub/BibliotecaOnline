@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BibliotecaService} from '../biblioteca.service';
 
 @Component({
   selector: 'app-lista',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista.component.css']
 })
 export class ListaComponent implements OnInit {
-
-  constructor() { }
+  listaCarti;
+  constructor(private bibliotecaService: BibliotecaService) { }
 
   ngOnInit(): void {
+    this.listaCarti = this.bibliotecaService.getListaCarti();
   }
 
 }
