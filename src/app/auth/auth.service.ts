@@ -33,6 +33,14 @@ export class AuthService {
     this.authStatus = bool;
     this.authStatusListener.next(bool);
   }
+
+  registerUser(){
+    this.router.navigateByUrl('/login');
+  }
+
+  trimiteMesajRegister(value){
+    alert('Inregistrare completa');
+  }
 }
 
 

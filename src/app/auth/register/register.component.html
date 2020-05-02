@@ -1,31 +1,18 @@
 <div class="registerPage">
-  <form action="" class="registerForm">
+  <form class="registerForm" [formGroup]="registerForm" (submit)="register()">
     <p class="title">Register</p>
-    <div class="name">
-      <p class="user">First Name*</p>
-      <input class="userInput" type="text" placeholder="First Name" required>
-    </div>
-    <div class="name">
-      <p class="user">Last Name*</p>
-      <input class="userInput" type="text" placeholder="Last Name" required>
-    </div>
-    <div class="name">
-      <p class="user">Email address*</p>
-      <input class="userInput" type="text" placeholder="Email address" required>
-    </div>
-    <div class="name">
-      <p class="user">Phone number*</p>
-      <input class="userInput" type="text" placeholder="Phone" required>
-    </div>
-    <div class="name">
-      <p class="user">University*</p>
-      <input class="userInput" type="text" placeholder="University" required>
-    </div>
-    <div class="name">
-      <p class="user">Password*</p>
-      <input class="userInput" type="text" placeholder="Create password" required>
-    </div>
-
+      <label for="firstName" class="user">First Name*</label>
+      <input formControlName="firstName" class="userInput" type="text" placeholder="First Name" required id="firstName">
+      <label for="lastName" class="user">Last Name*</label>
+      <input formControlName="lastName" class="userInput" type="text" placeholder="Last Name" required id="lastName">
+      <label for="email" class="user">Email address*</label>
+      <input formControlName="email" class="userInput" type="text" placeholder="Email address" required id="email">
+      <label for="phone" class="user">Phone number*</label>
+      <input formControlName="phone" class="userInput" type="text" placeholder="Phone" required id="phone">
+      <label for="university" class="user">University*</label>
+      <input formControlName="university" class="userInput" type="text" placeholder="University" required id="university">
+      <label for="password" class="user">Password*</label>
+      <input formControlName="password" class="userInput" type="text" placeholder="Create password" required id="password">
     <button id="login" type="submit">Register</button>
   </form>
 </div>

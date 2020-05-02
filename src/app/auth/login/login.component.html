@@ -1,10 +1,10 @@
 <div class="loginPage">
-    <form action="" class="loginForm" (submit)="loginUser()">
+    <form class="loginForm" [formGroup]="loginForm" (submit)="loginUser()">
       <p class="title">Log In</p>
-      <p class="user">Username</p>
-      <input class="userInput" type="text">
-      <p class="user">Password</p>
-      <input class="userInput" type="password">
+      <label for="username" class="user">Username</label>
+      <input formControlName="username" class="userInput" type="text" id="username">
+      <label for="password" class="user">Password</label>
+      <input formControlName="password" class="userInput" type="password" id="password">
       <button id="login" type="submit">Log In</button>
       <a routerLink="/register"> Create a new account</a>
     </form>

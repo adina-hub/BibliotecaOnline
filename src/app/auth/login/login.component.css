@@ -6,6 +6,15 @@
   justify-content: center;
   height: 100vh;
 }
+
+.loginPage a{
+  color: dodgerblue;
+}
+
+.loginPage a:hover{
+  text-decoration: underline;
+}
+
 .title{
   text-align: center;
   color: white;
