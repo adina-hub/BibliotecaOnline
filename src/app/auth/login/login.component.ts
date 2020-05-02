@@ -24,5 +24,8 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
     this.authService.loginUser();
   }
+  loginAdmin(){
+    this.authService.loginAdmin();
+  }
 
 }

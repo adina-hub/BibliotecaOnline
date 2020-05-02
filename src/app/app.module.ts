@@ -13,6 +13,7 @@ import { CarteComponent } from './biblioteca/imprumut/carte/carte.component';
 import { ListaComponent } from './biblioteca/lista/lista.component';
 import { ContactComponent } from './biblioteca/contact/contact.component';
 import {HttpClientModule} from '@angular/common/http';
+import { AcasaAdminComponent } from './admin/acasa-admin/acasa-admin.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {HttpClientModule} from '@angular/common/http';
     CarteComponent,
     ListaComponent,
     ContactComponent,
+    AcasaAdminComponent,
     ],
   imports: [
     BrowserModule,

@@ -9,10 +9,14 @@ import {HttpClient} from '@angular/common/http';
 export class AuthService {
   authStatus = false;
   authStatusListener = new Subject<boolean>();
+  userType = '';
+  userTypeListener = new Subject<string>();
   constructor(private router: Router, private http: HttpClient) { }
   loginUser() {
     this.authStatus = true;
     this.authStatusListener.next(true);
+    this.userType = 'user';
+    this.userTypeListener.next('user');
     localStorage.setItem('authStatus', 'true');
     this.router.navigateByUrl('/acasa');
   }
@@ -22,6 +26,14 @@ export class AuthService {
     localStorage.removeItem('authStatus');
     this.router.navigateByUrl('/login');
   }
+  loginAdmin(){
+    this.authStatus = true;
+    this.authStatusListener.next(true);
+    this.userType = 'admin';
+    this.userTypeListener.next('admin');
+    localStorage.setItem('authStatus', 'true');
+    this.router.navigateByUrl('/acasaAdmin');
+  }
   getAuthStatus(){
     this.authStatus = Boolean(localStorage.getItem('authStatus'));
     return this.authStatus;
@@ -29,11 +41,16 @@ export class AuthService {
   getAuthStatusListener(){
     return this.authStatusListener.asObservable();
   }
+  getUserType(){
+    return this.userType;
+  }
+  getUserTypeListener(){
+    return this.userTypeListener.asObservable();
+  }
   setAuthStatus(bool){
     this.authStatus = bool;
     this.authStatusListener.next(bool);
   }
-
   registerUser(){
     this.router.navigateByUrl('/login');
   }

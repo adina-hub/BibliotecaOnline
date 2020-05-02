@@ -6,6 +6,7 @@ import {AcasaComponent} from './biblioteca/acasa/acasa.component';
 import {ImprumutComponent} from './biblioteca/imprumut/imprumut.component';
 import {ListaComponent} from './biblioteca/lista/lista.component';
 import {ContactComponent} from './biblioteca/contact/contact.component';
+import {AcasaAdminComponent} from './admin/acasa-admin/acasa-admin.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'acasa', component: AcasaComponent},
   {path: 'imprumuta',  component: ImprumutComponent},
   {path: 'listaMea', component: ListaComponent},
-  {path: 'contact', component: ContactComponent}
+  {path: 'contact', component: ContactComponent},
+  {path: 'acasaAdmin', component: AcasaAdminComponent}
 ];
 
 @NgModule({
