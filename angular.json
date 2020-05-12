@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "BibliotecaOnline"
+    }
+  },
+  "defaultProject": "BibliotecaOnline",
+  "cli": {
+    "analytics": false
+  }
 }

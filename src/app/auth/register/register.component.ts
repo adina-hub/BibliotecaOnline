@@ -19,13 +19,15 @@ export class RegisterComponent implements OnInit {
       email: new FormControl(''),
       phone: new FormControl(''),
       university: new FormControl(''),
+      userType: new FormControl('user'),
       password: new FormControl('')
     });
   }
 
   register(){
+      console.log(this.registerForm.value);
       this.authService.trimiteMesajRegister(this.registerForm.value);
-      this.authService.registerUser();
+      this.authService.registerUser(this.registerForm.value);
   }
 
 }

@@ -4,6 +4,7 @@ import {BibliotecaService} from '../biblioteca.service';
 import {Carte} from '../carte.model';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-imprumut',
@@ -12,7 +13,9 @@ import {Router} from '@angular/router';
 })
 export class ImprumutComponent implements OnInit {
   categorii: { nume: string }[];
+  categoriiSub: Subscription;
   carti: Carte[];
+  cartiSub: Subscription;
   imprumutForm: FormGroup;
   carteFormId = -1;
   categorieCurenta: string;
@@ -23,8 +26,14 @@ export class ImprumutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.carti = this.bibliotecaService.getCarti();
-    this.categorii = this.bibliotecaService.getCategorii();
+    this.bibliotecaService.getCarti();
+    this.cartiSub = this.bibliotecaService.getCartiListener().subscribe(carti => {
+      this.carti = carti;
+    });
+    this.bibliotecaService.getCategorii();
+    this.categoriiSub = this.bibliotecaService.getCategoriiListener().subscribe(categorii => {
+      this.categorii = categorii;
+    });
     this.categorieCurenta = this.categorii[0].nume;
     this.imprumutForm = new FormGroup({
      cartiForms: new FormArray([this.initForm()])

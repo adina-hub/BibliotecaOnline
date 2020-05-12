@@ -1,51 +1,36 @@
 import { Injectable } from '@angular/core';
 import {Carte} from './carte.model';
 import {HttpClient} from '@angular/common/http';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BibliotecaService {
   carti: Carte[];
+  cartiListener = new Subject<Carte[]>();
   categorii: {nume: string}[];
+  categoriiListener = new Subject<{nume: string}[]>();
   listaCarti: {id: number, titlu: string, dataImprumut: Date, dataRetur: Date};
   constructor(private http: HttpClient) { }
   getCarti(){
-    this.carti = [
-      { isbn: '978-606-33-3606-5',
-        titlu: 'Pacienta Tacuta',
-        autor: 'Ion Creanga',
-        categoria: 'Actiune',
-        img: '../../../assets/images/Carti/actiune1.jpeg'
-      },
-      { isbn: '978-606-33-3606-5',
-        titlu: 'Hotul De Carti',
-        autor: 'Ion Creanga',
-        categoria: 'Actiune',
-        img: '../../../assets/images/Carti/actiune2.jpg'
-      },
-      { isbn: '978-606-33-3606-5',
-        titlu: 'Amintiri din copilarie',
-        autor: 'Koala Bear',
-        categoria: 'Comedie',
-        img: '../../../assets/images/Carti/actiune2.jpg'
-      },
-      { isbn: '978-606-33-3606-5',
-        titlu: 'Dragon Throne',
-        autor: 'Ion Creanga',
-        categoria: 'Aventura',
-        img: '../../../assets/images/Carti/aventura1.jpg'
-      },
-      ];
-    return this.carti;
+    this.http.get<{carti: Carte[]}>('serverUrl/carti').subscribe(serverData => {
+      this.carti = serverData.carti;
+      this.cartiListener.next([...this.carti]);
+    });
   }
+  getCartiListener(){
+    return this.cartiListener.asObservable();
+  }
+
   getCategorii(){
-  this.categorii = [
-    {nume: 'Actiune'},
-    {nume: 'Aventura'},
-    {nume: 'Comedie'}
-  ];
-  return this.categorii;
+    this.http.get<{categorii: {nume: string}[]}>('serverUrl/carti').subscribe(serverData => {
+      this.categorii = serverData.categorii;
+      this.categoriiListener.next([...this.categorii]);
+    });
+  }
+  getCategoriiListener(){
+    return this.categoriiListener.asObservable();
   }
 
   setListaCarti(listaCarti){

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
@@ -11,22 +11,44 @@ export class AuthService {
   authStatusListener = new Subject<boolean>();
   userType = '';
   userTypeListener = new Subject<string>();
-  constructor(private router: Router, private http: HttpClient) { }
-  loginUser() {
-    this.authStatus = true;
-    this.authStatusListener.next(true);
-    this.userType = 'user';
-    this.userTypeListener.next('user');
-    localStorage.setItem('authStatus', 'true');
-    this.router.navigateByUrl('/acasa');
+
+  constructor(private router: Router, private http: HttpClient) {
   }
-  logoutUser(){
+
+  /* loginUser() {
+     this.authStatus = true;
+     this.authStatusListener.next(true);
+     this.userType = 'user';
+     this.userTypeListener.next('user');
+     localStorage.setItem('authStatus', 'true');
+     this.router.navigateByUrl('/acasa');
+  }*/
+  loginUser(user) {
+    this.http.post<{ mesaj: string, token: string, userType: string }>('http://localhost:3000/login/', user).subscribe(dateServer => {
+      console.log(dateServer.mesaj);
+      if (dateServer.token) {
+        this.userType = dateServer.userType;
+        this.userTypeListener.next(dateServer.userType);
+        this.authStatus = true;
+        this.authStatusListener.next(true);
+        localStorage.setItem('authStatus', String(this.authStatus));
+        localStorage.setItem('userType', dateServer.userType);
+      } else {
+        alert('Request denied, no token');
+      }
+      this.router.navigateByUrl('/acasa');
+    });
+  }
+
+
+  logoutUser() {
     this.authStatus = false;
     this.authStatusListener.next(false);
     localStorage.removeItem('authStatus');
     this.router.navigateByUrl('/login');
   }
-  loginAdmin(){
+
+  loginAdmin() {
     this.authStatus = true;
     this.authStatusListener.next(true);
     this.userType = 'admin';
@@ -34,28 +56,37 @@ export class AuthService {
     localStorage.setItem('authStatus', 'true');
     this.router.navigateByUrl('/acasaAdmin');
   }
-  getAuthStatus(){
+
+  getAuthStatus() {
     this.authStatus = Boolean(localStorage.getItem('authStatus'));
     return this.authStatus;
   }
-  getAuthStatusListener(){
+
+  getAuthStatusListener() {
     return this.authStatusListener.asObservable();
   }
-  getUserType(){
+
+  getUserType() {
+    this.userType = localStorage.getItem('userType');
     return this.userType;
   }
-  getUserTypeListener(){
+
+  getUserTypeListener() {
     return this.userTypeListener.asObservable();
   }
-  setAuthStatus(bool){
+
+  setAuthStatus(bool) {
     this.authStatus = bool;
     this.authStatusListener.next(bool);
   }
-  registerUser(){
-    this.router.navigateByUrl('/login');
+
+  registerUser(user) {
+    this.http.post<{ message: string }>('http://localhost:3000/adduser/', user).subscribe(serverData => {
+      console.log(serverData.message);
+    });
   }
 
-  trimiteMesajRegister(value){
+  trimiteMesajRegister(value) {
     alert('Inregistrare completa');
   }
 }
@@ -101,7 +132,7 @@ export class AuthService {
 //       });
 //     });
 //   });
-// });
+// });  DONE !!!!
 
 // router.post('adresaServer/login', (req, res, next) => {
 //   User.findOne({email: req.body.email}).then(foundUser => {
