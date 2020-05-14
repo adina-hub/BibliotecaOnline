@@ -171,3 +171,26 @@ app.get('/getcarti', (req,res) =>{
   });
 });
 */
+var contactSchema= new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectID,
+  subiect: String,
+  descriere: String
+
+})
+var Contact = mongoose.model("Contact", contactSchema);
+
+app.post('/contactu', (req, res) => {
+  var contact = new Contact({
+    _id: mongoose.Types.ObjectId(),
+    subiect: req.body.subiect,
+    prenume: req.body.lastName,
+    descriere: req.body.mesaj,
+  });
+  console.log(contact);
+  dbo.collection("mesajeUser").insertOne(contact, function(err, res) {
+    if (err) throw err;
+    console.log("User entry created");
+  });
+});
+
+
