@@ -10,13 +10,20 @@ import {Subscription} from 'rxjs';
 export class HeaderComponent implements OnInit {
   userType: string;
   userTypeSub: Subscription;
+  userId: string;
+  userData: {displayName: string} = {displayName: ''};
+  userDataSub: Subscription;
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.userType = this.authService.getUserType();
     this.userTypeSub = this.authService.getUserTypeListener().subscribe(userType => {
       this.userType = userType;
-      console.log(this.userType);
+    });
+    this.userId = this.authService.getUserId();
+    this.authService.getUserData(this.userId);
+    this.userDataSub = this.authService.getUserDataListener().subscribe(displayName => {
+      this.userData.displayName = displayName;
     });
   }
   logout(){

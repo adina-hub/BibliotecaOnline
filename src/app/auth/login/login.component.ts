@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(){
-    alert('Login button pressed');
     this.authService.loginUser(this.loginForm.value);
   }
   loginAdmin(){

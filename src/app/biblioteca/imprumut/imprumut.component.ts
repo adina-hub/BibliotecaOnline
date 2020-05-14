@@ -12,9 +12,9 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./imprumut.component.css']
 })
 export class ImprumutComponent implements OnInit {
-  categorii: { nume: string }[];
+  categorii: { nume: string }[] = [];
   categoriiSub: Subscription;
-  carti: Carte[];
+  carti: Carte[] = [];
   cartiSub: Subscription;
   imprumutForm: FormGroup;
   carteFormId = -1;
@@ -33,10 +33,10 @@ export class ImprumutComponent implements OnInit {
     this.bibliotecaService.getCategorii();
     this.categoriiSub = this.bibliotecaService.getCategoriiListener().subscribe(categorii => {
       this.categorii = categorii;
-    });
-    this.categorieCurenta = this.categorii[0].nume;
-    this.imprumutForm = new FormGroup({
-     cartiForms: new FormArray([this.initForm()])
+      this.categorieCurenta = this.categorii[0].nume;
+      this.imprumutForm = new FormGroup({
+        cartiForms: new FormArray([this.initForm()])
+      });
     });
   }
 

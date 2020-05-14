@@ -13,7 +13,7 @@ import { ListaComponent } from './biblioteca/lista/lista.component';
 import { ContactComponent } from './biblioteca/contact/contact.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AcasaAdminComponent } from './admin/acasa-admin/acasa-admin.component';
-
+import {Ng2CarouselamosModule} from 'ng2-carouselamos';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { AcasaAdminComponent } from './admin/acasa-admin/acasa-admin.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2CarouselamosModule
   ],
   providers: [],
   bootstrap: [AppComponent]

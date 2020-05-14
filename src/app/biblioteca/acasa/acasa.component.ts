@@ -13,20 +13,22 @@ export class AcasaComponent implements OnInit {
   authStatus = true;
   carti: Carte[];
   cartiSub: Subscription;
+  images: {categorie: string, src: string}[];
   categoriiSub: Subscription;
   categorii: {nume: string}[];
   constructor(private authService: AuthService,
               private bibliotecaService: BibliotecaService) { }
 
   ngOnInit(): void {
-    this.bibliotecaService.getCarti();
-    this.cartiSub = this.bibliotecaService.getCartiListener().subscribe(carti => {
-      this.carti = carti;
-    });
-    this.bibliotecaService.getCategorii();
-    this.categoriiSub = this.bibliotecaService.getCategoriiListener().subscribe(categorii => {
+     this.bibliotecaService.getCarti();
+     this.cartiSub = this.bibliotecaService.getCartiListener().subscribe(carti => {
+       this.carti = carti;
+     });
+     this.bibliotecaService.getCategorii();
+     this.categoriiSub = this.bibliotecaService.getCategoriiListener().subscribe(categorii => {
       this.categorii = categorii;
     });
+
   }
 
 }
