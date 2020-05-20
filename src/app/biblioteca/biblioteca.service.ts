@@ -55,7 +55,7 @@ export class BibliotecaService {
 
   trimiteMesaj(mesaj){
   alert('Mesaj trimis');
-  this.http.post<{message: string}>('http://localhost:3000/contact', mesaj).subscribe((serverData) => {
+  this.http.post<{message: string}>('http://localhost:3000/contactu', mesaj).subscribe((serverData) => {
     console.log(serverData.message);
   });
 }
