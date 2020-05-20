@@ -5,6 +5,7 @@ import {Carte} from '../carte.model';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-imprumut',
@@ -20,13 +21,16 @@ export class ImprumutComponent implements OnInit {
   carteFormId = -1;
   categorieCurenta: string;
   totalCarti = 1;
+  userId: string;
   constructor(private authService: AuthService,
               private bibliotecaService: BibliotecaService,
-              private router: Router) {
+              private router: Router,
+              private http: HttpClient) {
   }
 
   ngOnInit(): void {
     this.bibliotecaService.getCarti();
+    this.userId = this.authService.getUserId();
     this.cartiSub = this.bibliotecaService.getCartiListener().subscribe(carti => {
       this.carti = carti;
     });
@@ -80,14 +84,21 @@ export class ImprumutComponent implements OnInit {
   finalizareImprumut(){
     const userInputData = this.imprumutForm.value.cartiForms.map(carteForm => {
       return {
-        categoria: carteForm.categorie.nume,
+        userId: this.userId,
         titlu: carteForm.carte.titlu,
         dataImprumut: new Date(),
         dataRetur: new Date(Date.now() + 12096e5)
       };
     });
-    this.bibliotecaService.setListaCarti(userInputData);
+    this.bibliotecaService.sendListaCarti(userInputData);
     this.router.navigateByUrl('/listaMea');
   }
+
+  // finalizareImprumut(){
+  //   this.http.post<{ message: string }>('http://localhost:3000/addbooks/').subscribe(serverData => {
+  //     console.log(serverData.message);
+  //   });
+  //   this.router.navigateByUrl('/listaMea');
+  // }
 
 }

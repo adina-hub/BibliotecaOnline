@@ -47,6 +47,12 @@ nav a.navbar-brand{
 }
 
 
+@media (min-width: 992px) and (max-width: 1500px) {
+  .navbar-nav li {
+    font-size: 1.1em;
+  }
+}
+
 
 
 
