@@ -14,6 +14,8 @@ import { ContactComponent } from './biblioteca/contact/contact.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AcasaAdminComponent } from './admin/acasa-admin/acasa-admin.component';
 import {Ng2CarouselamosModule} from 'ng2-carouselamos';
+import { ModifCartiComponent } from './admin/modif-carti/modif-carti.component';
+import { ModifImprumutComponent } from './admin/modif-imprumut/modif-imprumut.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import {Ng2CarouselamosModule} from 'ng2-carouselamos';
     ListaComponent,
     ContactComponent,
     AcasaAdminComponent,
+    ModifCartiComponent,
+    ModifImprumutComponent,
     ],
   imports: [
     BrowserModule,

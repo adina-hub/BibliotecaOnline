@@ -1,1 +1,23 @@
-<p>acasa-admin works!</p>
+<div class="AcasaAdminPage">
+  <div class="Box overflow-auto">
+    <div class="Msg" *ngFor="let mesaj of mesaje">
+      <div class="RandMare">
+        <div class="rand">
+          <h3>Email:</h3>
+          <h3>{{mesaj.email}}</h3>
+        </div>
+        <div class="rand">
+          <h3>Subiect:</h3>
+          <h3>{{mesaj.subiect}}</h3>
+        </div>
+        <div class="rand">
+          <h3>Mesaj:</h3>
+          <h3>{{mesaj.mesaj}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

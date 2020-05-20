@@ -52,6 +52,7 @@ export class AuthService {
     this.userType = 'admin';
     this.userTypeListener.next('admin');
     localStorage.setItem('authStatus', 'true');
+    localStorage.setItem('userType', this.userType);
     this.router.navigateByUrl('/acasaAdmin');
   }
 

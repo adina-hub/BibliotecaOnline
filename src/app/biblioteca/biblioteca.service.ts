@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class BibliotecaService {
   carti: Carte[] = [];
-  // images: {categorie: string, src: string}[];
+  mesaje: {subiect: string, mesaj: string}[] = [];
   cartiListener = new Subject<Carte[]>();
   categorii: {nume: string}[] = [];
   categoriiListener = new Subject<{nume: string}[]>();
@@ -59,5 +59,11 @@ export class BibliotecaService {
     console.log(serverData.message);
   });
 }
+  getMesaje()
+  {
+    this.http.get<{mesaje:{subiect: string, mesaj: string}[]}>('http://localhost:3000/getMesaje/').subscribe(serverData => {
+      this.mesaje = serverData.mesaje;
+    });
+  }
 }
 

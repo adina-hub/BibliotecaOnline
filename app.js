@@ -195,8 +195,9 @@ app.post('/contactu', (req, res) => {
 });
 
 
-app.get("/getmesaje",(req, res, next) => {
+app.get("/getMesaje",(req, res, next) => {
   dbo.collection("mesajeUser").find({}).toArray(function(err, mesajeFound) {
+    //console.log (mesajeFound);
     if (err) throw err;
     res.status(200).json({
       mesaje: mesajeFound
