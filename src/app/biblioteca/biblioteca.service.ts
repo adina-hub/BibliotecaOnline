@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class BibliotecaService {
   carti: Carte[] = [];
   mesaje: {subiect: string, mesaj: string}[] = [];
+  mesajeListener = new Subject<{subiect: string, mesaj: string}[]>();
   cartiListener = new Subject<Carte[]>();
   categorii: {nume: string}[] = [];
   categoriiListener = new Subject<{nume: string}[]>();
@@ -63,7 +64,12 @@ export class BibliotecaService {
   {
     this.http.get<{mesaje:{subiect: string, mesaj: string}[]}>('http://localhost:3000/getMesaje/').subscribe(serverData => {
       this.mesaje = serverData.mesaje;
+      this.mesajeListener.next([...this.mesaje]);
     });
+
+  }
+  getMesajeListener(){
+    return this.mesajeListener.asObservable();
   }
   adauga(book)
   {
