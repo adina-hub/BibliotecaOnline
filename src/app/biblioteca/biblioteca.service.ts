@@ -65,5 +65,14 @@ export class BibliotecaService {
       this.mesaje = serverData.mesaje;
     });
   }
+  adauga(book)
+  {
+    this.http.post<{ message: string }>('http://localhost:3000/addBook/', book).subscribe(serverData => {
+      console.log(serverData.message);
+    });
+  }
+  trimiteMesajAdauga(value) {
+    alert('Carte adaugata cu succes');
+  }
 }
 

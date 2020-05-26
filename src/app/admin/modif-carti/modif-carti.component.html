@@ -1,11 +1,15 @@
-<div class="listaPage">
-  <h1>Lista carti imprumutate</h1>
-  <hr>
-  <ul class="tabel">
-    <li>Id</li>
-    <li>Titlu</li>
-    <li>Data Imprumut</li>
-    <li>Data Retur</li>
-  </ul>
-
+<div class="addbook">
+  <form class="bookForm" [formGroup]="bookForm" (submit)="addBook()">
+    <p class="title"></p>
+    <label for="isbn" class="user">ISBN</label>
+    <input formControlName="isbn" class="userInput" type="text" placeholder="isbn" required id="isbn">
+    <label for="titlu" class="user">Titlu</label>
+    <input formControlName="titlu" class="userInput" type="text" placeholder="titlu" required id="titlu">
+    <label for="autor" class="user">Autor</label>
+    <input formControlName="autor" class="userInput" type="text" placeholder="autor" required id="autor">
+    <label for="categoria" class="user">Categoria</label>
+    <input formControlName="categoria" class="userInput" type="text" placeholder="categoria" required id="categoria">
+    <button id="addbook" type="submit">Adauga Carte</button>
+  </form>
 </div>
+

@@ -106,5 +106,4 @@ export class AuthService {
   trimiteMesajRegister(value) {
     alert('Inregistrare completa');
   }
-
 }
