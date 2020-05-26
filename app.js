@@ -206,6 +206,15 @@ var bookSchema= new mongoose.Schema({
   categoria: String
 
 })
+var categoriaSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectID,
+  nume: {
+    type: String,
+    unique: true
+  }
+})
+
+var Categorie = mongoose.model("Categorie", categoriaSchema);
 
 var Book = mongoose.model("Book", bookSchema);
 app.post('/addBook', (req, res) => {
@@ -216,6 +225,18 @@ app.post('/addBook', (req, res) => {
     autor: req.body.autor,
     categoria: req.body.categoria,
   });
+  var categoria = new Categorie({
+    _id: mongoose.Types.ObjectId(),
+    nume: req.body.categoria,
+  })
+
+    dbo.collection("gen").insertOne(categoria, function (err, res) {
+      if (err) throw err;
+      console.log("categoria entry created");
+    });
+
+
+
   console.log(book);
   dbo.collection("carte").insertOne(book, function(err, res) {
     if (err) throw err;

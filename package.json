@@ -27,6 +27,7 @@
     "firebase": "^7.14.3",
     "firebaseui": "^4.5.0",
     "fs": "0.0.1-security",
+    "int": "^0.2.0",
     "jsonwebtoken": "^8.5.1",
     "lodash.isequal": "^4.5.0",
     "mongoose": "^5.9.12",
