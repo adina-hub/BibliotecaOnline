@@ -45,16 +45,8 @@ var userSchema = new mongoose.Schema ({
   }
 );
 
-var bookSchema = new mongoose.Schema({
-  isbn: String,
-  titlu: String,
-  autor: String,
-  categoria: String,
-  img: String,
-});
 
 var User = mongoose.model("User", userSchema);
-var Book = mongoose.model("Book", bookSchema);
 
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -204,4 +196,33 @@ app.get("/getMesaje",(req, res, next) => {
     });
   });
 });
+
+
+var bookSchema= new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectID,
+  isbn: String,
+  titlu: String,
+  autor: String,
+  categoria: String
+
+})
+
+var Book = mongoose.model("Book", bookSchema);
+app.post('/addBook', (req, res) => {
+  var book = new Book({
+    _id: mongoose.Types.ObjectId(),
+    isbn: req.body.isbn,
+    titlu: req.body.titlu,
+    autor: req.body.autor,
+    categoria: req.body.categoria,
+  });
+  console.log(book);
+  dbo.collection("carte").insertOne(book, function(err, res) {
+    if (err) throw err;
+    console.log("book entry created");
+  });
+});
+
+
+
 
