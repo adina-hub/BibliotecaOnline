@@ -48,7 +48,6 @@ var userSchema = new mongoose.Schema ({
 
 var User = mongoose.model("User", userSchema);
 
-
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
