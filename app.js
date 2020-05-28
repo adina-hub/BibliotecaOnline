@@ -269,6 +269,15 @@ app.post('/addRezervare', (req, res) => {
 })
 
 
+app.get("/gerRezervare",(req, res, next) => {
+  dbo.collection("rezervare").find({}).toArray(function(err, rezervareFound) {
+    //console.log (mesajeFound);
+    if (err) throw err;
+    res.status(200).json({
+      mesaje: rezervareFound
+    });
+  });
+});
 
 
 
