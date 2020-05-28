@@ -301,4 +301,29 @@ app.post('/addBook', (req, res) => {
 
 
 
+app.post('/addRezervare', (req, res) => {
+  var rezervare = new Rezervare({
+    _id: mongoose.Types.ObjectId(),
+    email: req.body.email,
+    carte: req.body.titlu,
+    data_imp: req.body.data_imp,
+    data_ret: req.body.data_ret,
+  });
+  dbo.collection("rezervare").insertOne(rezervare, function (err, res) {
+    if (err) throw err;
+    console.log("rezervare entry created");
+  });
+})
+
+
+app.get("/getRezervare",(req, res, next) => {
+  dbo.collection("rezervare").find({}).toArray(function(err, rezervareFound) {
+    console.log (rezervareFound);
+    if (err) throw err;
+    res.status(200).json({
+      rezervare: rezervareFound
+    });
+  });
+});
+
 
