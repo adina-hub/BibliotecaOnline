@@ -177,7 +177,6 @@ app.post('/addRezervare', (req, res) => {
     data_imp: req.body[0].dataImprumut,
     data_ret: req.body[0].dataRetur,
   });
-  console.log(rezervare);
   dbo.collection("rezervare").insertOne(rezervare, function (err, res) {
     if (err) throw err;
     console.log("rezervare entry created");
