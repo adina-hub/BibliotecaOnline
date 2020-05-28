@@ -193,13 +193,15 @@ var rezervareSchema= new mongoose.Schema({
 var Rezervare = mongoose.model("Rezervare", rezervareSchema);
 
 app.post('/addRezervare', (req, res) => {
+  console.log(req.body);
   var rezervare = new Rezervare({
     _id: mongoose.Types.ObjectId(),
-    email: req.body[0].mail,
-    carte: req.body[0].titlu,
-    data_imp: req.body[0].dataImprumut,
-    data_ret: req.body[0].dataRetur,
+    email: req.body.mail,
+    carte: req.body.titlu,
+    data_imp: req.body.dataImprumut,
+    data_ret: req.body.dataRetur,
   });
+  console.log(rezervare);
   dbo.collection("rezervare").insertOne(rezervare, function (err, res) {
     if (err) throw err;
     console.log("rezervare entry created");
@@ -303,10 +305,10 @@ app.post('/addBook', (req, res) => {
 app.post('/addRezervare', (req, res) => {
   var rezervare = new Rezervare({
     _id: mongoose.Types.ObjectId(),
-    email: req.body.email,
-    carte: req.body.titlu,
-    data_imp: req.body.data_imp,
-    data_ret: req.body.data_ret,
+    email: req.body[0].mail,
+    carte: req.body[0].titlu,
+    data_imp: req.body[0].dataImprumut,
+    data_ret: req.body[0].dataRetur,
   });
   dbo.collection("rezervare").insertOne(rezervare, function (err, res) {
     if (err) throw err;

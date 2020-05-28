@@ -44,7 +44,7 @@ export class BibliotecaService {
 
 
   sendListaCarti(listaCarti){
-    this.http.post('serveURL', listaCarti).subscribe(() => {
+    this.http.post('http://localhost:3000/addRezervare/', listaCarti).subscribe(() => {
       this.router.navigateByUrl('/listaMea');
     });
   }
