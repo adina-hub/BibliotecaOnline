@@ -222,7 +222,7 @@ var contactSchema= new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectID,
   email: String,
   subiect: String,
-  descriere: String
+  mesaj: String
 
 })
 
@@ -233,7 +233,7 @@ app.post('/contactu', (req, res) => {
     _id: mongoose.Types.ObjectId(),
     email: req.body.email,
     subiect: req.body.subiect,
-    descriere: req.body.mesaj,
+    mesaj: req.body.mesaj,
   });
   console.log(contact);
   dbo.collection("mesajeUser").insertOne(contact, function(err, res) {
