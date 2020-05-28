@@ -192,31 +192,31 @@ var rezervareSchema= new mongoose.Schema({
 })
 var Rezervare = mongoose.model("Rezervare", rezervareSchema);
 
-app.post('/addRezervare', (req, res) => {
-  console.log(req.body);
-  var rezervare = new Rezervare({
-    _id: mongoose.Types.ObjectId(),
-    email: req.body.mail,
-    carte: req.body.titlu,
-    data_imp: req.body.dataImprumut,
-    data_ret: req.body.dataRetur,
-  });
-  console.log(rezervare);
-  dbo.collection("rezervare").insertOne(rezervare, function (err, res) {
-    if (err) throw err;
-    console.log("rezervare entry created");
-  });
-})
-
-app.get("/getRezervare",(req, res, next) => {
-  dbo.collection("rezervare").find({}).toArray(function(err, rezervareFound) {
-    //console.log (mesajeFound);
-    if (err) throw err;
-    res.status(200).json({
-      mesaje: rezervareFound
-    });
-  });
-});
+// app.post('/addRezervare', (req, res) => {
+//   console.log(req.body);
+//   var rezervare = new Rezervare({
+//     _id: mongoose.Types.ObjectId(),
+//     email: req.body.mail,
+//     carte: req.body.titlu,
+//     data_imp: req.body.dataImprumut,
+//     data_ret: req.body.dataRetur,
+//   });
+//   console.log(rezervare);
+//   dbo.collection("rezervare").insertOne(rezervare, function (err, res) {
+//     if (err) throw err;
+//     console.log("rezervare entry created");
+//   });
+// })
+//
+// app.get("/getRezervare",(req, res, next) => {
+//   dbo.collection("rezervare").find({}).toArray(function(err, rezervareFound) {
+//     //console.log (mesajeFound);
+//     if (err) throw err;
+//     res.status(200).json({
+//       mesaje: rezervareFound
+//     });
+//   });
+// });
 
 var contactSchema= new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectID,
