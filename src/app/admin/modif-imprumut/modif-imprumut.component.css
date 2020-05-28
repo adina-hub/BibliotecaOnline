@@ -1,48 +1,30 @@
-.listaPage{
+.ModifImprumut{
   background: rgba(0,0,0,0.7);
   width: 50%;
   margin: 0 auto;
   color: white;
   padding: 40px 35px;
 }
-
-.listaPage h1{
-  text-align: center;
+.Box{
+  width: 100%;
+  height: 700px;
+  margin-top: 50px;
+  background: rgba(0,0,0,0.7);
 }
 
-hr{
-  width: 500px;
-  height: 1px;
-  background-color: white;
-  margin: auto;
-  margin-bottom: 50px;
+.rand{
+  display:flex;
 }
 
-.tabel{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 20px;
-  list-style-type: none;
-  background: rgba(192,192,192,0.5);
+.RandMare{
+  border-width: 4px;
+  border-style: ridge;
+  border-color: darkgray;
+
 }
 
-.tableRow{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 20px;
-  list-style-type: none;
-  background: rgba(255,255,255,0.7);
-  border-radius: 9px;
-  height: 40px;
-  align-items: center;
-}
-
-.tableRow li{
-  color: black;
-}
-
-.dataImprumut{
-  padding-right: 40px;
+h3{
+  margin-right: 10px;
+  font-size: 23px;
+  font-family: Arial;
 }

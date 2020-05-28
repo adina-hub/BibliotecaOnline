@@ -11,6 +11,8 @@ export class BibliotecaService {
   carti: Carte[] = [];
   mesaje: {subiect: string, mesaj: string}[] = [];
   mesajeListener = new Subject<{subiect: string, mesaj: string}[]>();
+  rezervare:{email: string, carte: string, data_imp: string, data_ret: string}[] = [];
+  rezervareListener = new Subject<{email: string, carte: string, data_imp: string, data_ret: string}[]>();
   cartiListener = new Subject<Carte[]>();
   categorii: {nume: string}[] = [];
   categoriiListener = new Subject<{nume: string}[]>();
@@ -60,14 +62,24 @@ export class BibliotecaService {
     console.log(serverData.message);
   });
 }
+  getRezervare(){
+    this.http.get<{rezervare:{email: string, carte: string, data_imp: string, data_ret: string}[]}>('http://localhost:3000/getRezervare/').subscribe(serverData => {
+      this.rezervare = serverData.rezervare;
+      this.rezervareListener.next([...this.rezervare]);
+    });
+
+  }
+  getRezervareListener(){
+    return this.rezervareListener.asObservable();
+  }
   getMesaje()
   {
     this.http.get<{mesaje:{subiect: string, mesaj: string}[]}>('http://localhost:3000/getMesaje/').subscribe(serverData => {
       this.mesaje = serverData.mesaje;
       this.mesajeListener.next([...this.mesaje]);
     });
-
   }
+
   getMesajeListener(){
     return this.mesajeListener.asObservable();
   }
