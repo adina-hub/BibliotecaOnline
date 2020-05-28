@@ -22,6 +22,8 @@ export class ImprumutComponent implements OnInit {
   categorieCurenta: string;
   totalCarti = 1;
   userId: string;
+  userMail: {mail: string} = {mail: ''};
+  userMailSub: Subscription;
   constructor(private authService: AuthService,
               private bibliotecaService: BibliotecaService,
               private router: Router,
@@ -42,6 +44,11 @@ export class ImprumutComponent implements OnInit {
         cartiForms: new FormArray([this.initForm()])
       });
     });
+    this.authService.getUserMail(this.userId);
+    this.userMailSub = this.authService.getUserMailListener().subscribe(userMail => {
+      this.userMail.mail = userMail;
+    });
+
   }
 
   filtrareCarti(categorie: string) {
@@ -87,18 +94,14 @@ export class ImprumutComponent implements OnInit {
         userId: this.userId,
         titlu: carteForm.carte.titlu,
         dataImprumut: new Date(),
-        dataRetur: new Date(Date.now() + 12096e5)
+        dataRetur: new Date(Date.now() + 12096e5),
+        mail: this.userMail.mail
       };
     });
+
     this.bibliotecaService.sendListaCarti(userInputData);
     this.router.navigateByUrl('/listaMea');
   }
 
-  // finalizareImprumut(){
-  //   this.http.post<{ message: string }>('http://localhost:3000/addbooks/').subscribe(serverData => {
-  //     console.log(serverData.message);
-  //   });
-  //   this.router.navigateByUrl('/listaMea');
-  // }
 
 }

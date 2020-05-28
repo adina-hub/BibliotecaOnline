@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable } from '@angular/core';
 import {Carte} from './carte.model';
 import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs';
@@ -14,7 +14,7 @@ export class BibliotecaService {
   cartiListener = new Subject<Carte[]>();
   categorii: {nume: string}[] = [];
   categoriiListener = new Subject<{nume: string}[]>();
-  listaCarti: { userId: string; titlu: string; dataImprumut: Date; dataRetur: Date }[];
+  listaCarti: { userId: string; titlu: string; dataImprumut: Date; dataRetur: Date, email: string }[];
   constructor(private http: HttpClient, private router: Router) { }
 
   getCarti(){
@@ -28,7 +28,7 @@ export class BibliotecaService {
     return this.cartiListener.asObservable();
   }
 
-   getCategorii(){
+  getCategorii(){
     this.http.get<{categorii: {nume: string}[]}>('http://localhost:3000/getCategorii/').subscribe(serverData => {
       console.log(serverData);
       this.categorii = serverData.categorii;
@@ -42,27 +42,27 @@ export class BibliotecaService {
 
 
   sendListaCarti(listaCarti){
-    this.http.post('serveURL', listaCarti).subscribe(() => {
+    this.http.post('http://localhost:3000/addRezervare', listaCarti).subscribe(() => {
       this.router.navigateByUrl('/listaMea');
     });
   }
   getListaCarti(){
-    this.http.get<{listaCarti: {userId: string, titlu: string, dataImprumut: Date, dataRetur: Date}[]}>('serverURL')
-      .subscribe(serverData => {
+    this.http.get<{listaCarti: {userId: string, titlu: string, dataImprumut: Date, dataRetur: Date, email: string}[]}>
+    ('serverUrl').subscribe(serverData => {
       this.listaCarti = serverData.listaCarti;
       return this.listaCarti;
     });
   }
 
   trimiteMesaj(mesaj){
-  alert('Mesaj trimis');
-  this.http.post<{message: string}>('http://localhost:3000/contactu', mesaj).subscribe((serverData) => {
-    console.log(serverData.message);
-  });
-}
+    alert('Mesaj trimis');
+    this.http.post<{message: string}>('http://localhost:3000/contactu', mesaj).subscribe((serverData) => {
+      console.log(serverData.message);
+    });
+  }
   getMesaje()
   {
-    this.http.get<{mesaje:{subiect: string, mesaj: string}[]}>('http://localhost:3000/getMesaje/').subscribe(serverData => {
+    this.http.get<{mesaje: {subiect: string, mesaj: string}[]}>('http://localhost:3000/getMesaje/').subscribe(serverData => {
       this.mesaje = serverData.mesaje;
       this.mesajeListener.next([...this.mesaje]);
     });
