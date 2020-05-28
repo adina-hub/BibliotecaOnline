@@ -167,7 +167,7 @@ var contactSchema= new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectID,
   email: String,
   subiect: String,
-  descriere: String
+  mesaj: String
 
 })
 var Contact = mongoose.model("Contact", contactSchema);
@@ -177,7 +177,7 @@ app.post('/contactu', (req, res) => {
     _id: mongoose.Types.ObjectId(),
     email: req.body.email,
     subiect: req.body.subiect,
-    descriere: req.body.mesaj,
+    mesaj: req.body.mesaj,
   });
   console.log(contact);
   dbo.collection("mesajeUser").insertOne(contact, function(err, res) {
@@ -243,6 +243,31 @@ app.post('/addBook', (req, res) => {
     console.log("book entry created");
   });
 });
+
+var rezervareSchema= new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectID,
+  email: String,
+  carte: String,
+  data_imp: String,
+  data_ret: String
+
+})
+var Rezervare = mongoose.model("Rezervare", rezervareSchema);
+
+app.post('/addRezervare', (req, res) => {
+  var rezervare = new Rezervare({
+    _id: mongoose.Types.ObjectId(),
+    email: req.body.email,
+    carte: req.body.titlu,
+    data_imp: req.body.data_imp,
+    data_ret: req.body.data_ret,
+  });
+  dbo.collection("rezervare").insertOne(rezervare, function (err, res) {
+    if (err) throw err;
+    console.log("rezervare entry created");
+  });
+})
+
 
 
 
