@@ -299,16 +299,7 @@ app.post('/addBook', (req, res) => {
   });
 });
 
-<<<<<<< HEAD
-var rezervareSchema= new mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectID,
-  email: String,
-  carte: String,
-  data_imp: String,
-  data_ret: String
 
-})
-var Rezervare = mongoose.model("Rezervare", rezervareSchema);
 
 app.post('/addRezervare', (req, res) => {
   var rezervare = new Rezervare({
@@ -330,12 +321,9 @@ app.get("/getRezervare",(req, res, next) => {
     console.log (rezervareFound);
     if (err) throw err;
     res.status(200).json({
-      mesaje: rezervareFound
+      rezervare: rezervareFound
     });
   });
 });
-=======
->>>>>>> 7c41aada6fee47e4733404d901957be35ed43b57
-
 
 
