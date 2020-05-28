@@ -10,7 +10,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./acasa-admin.component.css']
 })
 export class AcasaAdminComponent implements OnInit {
-  mesaje:{ subiect: string, mesaj: string }[];
+  mesaje: { subiect: string, mesaj: string }[];
   mesajeSub: Subscription;
   constructor(private http: HttpClient, private bibliotecaService: BibliotecaService){}
 
