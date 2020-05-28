@@ -204,11 +204,14 @@ var rezervareSchema= new mongoose.Schema({
 var Rezervare = mongoose.model("Rezervare", rezervareSchema);
 
 
+
+
+
 var contactSchema= new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectID,
   email: String,
   subiect: String,
-  descriere: String
+  mesaj: String
 
 })
 
@@ -220,7 +223,7 @@ app.post('/contactu', (req, res) => {
     _id: mongoose.Types.ObjectId(),
     email: req.body.email,
     subiect: req.body.subiect,
-    descriere: req.body.mesaj,
+    mesaj: req.body.mesaj,
   });
   console.log(contact);
   dbo.collection("mesajeUser").insertOne(contact, function(err, res) {
@@ -289,14 +292,6 @@ app.post('/addBook', (req, res) => {
 
 
 
-app.get("/getRezervare",(req, res, next) => {
-  dbo.collection("rezervare").find({}).toArray(function(err, rezervareFound) {
-    console.log (rezervareFound);
-    if (err) throw err;
-    res.status(200).json({
-      rezervare: rezervareFound
-    });
-  });
-});
+
 
 

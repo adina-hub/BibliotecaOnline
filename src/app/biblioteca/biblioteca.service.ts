@@ -94,6 +94,5 @@ export class BibliotecaService {
   trimiteMesajAdauga(value) {
     alert('Carte adaugata cu succes');
   }
-
 }
 
