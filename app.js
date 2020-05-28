@@ -195,10 +195,10 @@ var Rezervare = mongoose.model("Rezervare", rezervareSchema);
 app.post('/addRezervare', (req, res) => {
   var rezervare = new Rezervare({
     _id: mongoose.Types.ObjectId(),
-    email: req.body.mail,
-    carte: req.body.titlu,
-    data_imp: req.body.dataImprumut,
-    data_ret: req.body.dataRetur,
+    email: req.body[0].mail,
+    carte: req.body[0].titlu,
+    data_imp: req.body[0].dataImprumut,
+    data_ret: req.body[0].dataRetur,
   });
   dbo.collection("rezervare").insertOne(rezervare, function (err, res) {
     if (err) throw err;
