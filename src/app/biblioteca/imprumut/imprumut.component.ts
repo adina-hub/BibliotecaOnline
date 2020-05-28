@@ -93,12 +93,11 @@ export class ImprumutComponent implements OnInit {
       return {
         userId: this.userId,
         titlu: carteForm.carte.titlu,
-        dataImprumut: new Date(),
-        dataRetur: new Date(Date.now() + 12096e5),
+        dataImprumut: new Date().toLocaleDateString(),
+        dataRetur: new Date(Date.now() + 12096e5).toLocaleDateString(),
         mail: this.userMail.mail
       };
     });
-
     this.bibliotecaService.sendListaCarti(userInputData);
     this.router.navigateByUrl('/listaMea');
   }

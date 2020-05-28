@@ -2,15 +2,13 @@
   <h1>Lista carti imprumutate</h1>
   <hr>
   <ul class="tabel">
-    <li>Id</li>
     <li>Titlu</li>
     <li>Data Imprumut</li>
     <li>Data Retur</li>
   </ul>
-  <ul class="tableRow" *ngFor="let carte of listaCarti">
-    <li>{{carte.id + 1}}</li>
-    <li>{{carte.titlu}}</li>
-    <li class="dataImprumut">{{carte.dataImprumut.toLocaleDateString()}}</li>
-    <li>{{carte.dataRetur.toLocaleDateString()}}</li>
+  <ul class="tableRow" *ngFor="let carte of lista">
+    <li>{{carte.carte}}</li>
+    <li class="dataImprumut">{{carte.data_imp}}</li>
+    <li>{{carte.data_ret}}</li>
   </ul>
 </div>

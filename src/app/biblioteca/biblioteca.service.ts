@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Carte} from './carte.model';
 import {HttpClient} from '@angular/common/http';
-import {Subject} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
 import {Router} from '@angular/router';
+import {AuthService} from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class BibliotecaService {
   categorii: {nume: string}[] = [];
   categoriiListener = new Subject<{nume: string}[]>();
   listaCarti: { userId: string; titlu: string; dataImprumut: Date; dataRetur: Date }[];
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
 
   getCarti(){
     this.http.get<{carti: Carte[]}>('http://localhost:3000/getCarti/').subscribe(serverData => {
@@ -57,13 +58,14 @@ export class BibliotecaService {
   }
 
   trimiteMesaj(mesaj){
-  alert('Mesaj trimis');
-  this.http.post<{message: string}>('http://localhost:3000/contactu', mesaj).subscribe((serverData) => {
+    alert('Mesaj trimis');
+    this.http.post<{message: string}>('http://localhost:3000/contactu', mesaj).subscribe((serverData) => {
     console.log(serverData.message);
   });
 }
   getRezervare(){
-    this.http.get<{rezervare:{email: string, carte: string, data_imp: string, data_ret: string}[]}>('http://localhost:3000/getRezervare/').subscribe(serverData => {
+    this.http.get<{rezervare: {email: string, carte: string, data_imp: string, data_ret: string}[]}>
+    ('http://localhost:3000/getRezervare/').subscribe(serverData => {
       this.rezervare = serverData.rezervare;
       this.rezervareListener.next([...this.rezervare]);
     });

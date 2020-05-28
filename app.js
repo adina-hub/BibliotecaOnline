@@ -182,6 +182,17 @@ app.post('/addRezervare', (req, res) => {
   });
 })
 
+app.get("/getRezervare",(req, res, next) => {
+  dbo.collection("rezervare").find({}).toArray(function(err, rezervareFound) {
+    console.log (rezervareFound);
+    if (err) throw err;
+    res.status(200).json({
+      rezervare: rezervareFound
+    });
+  });
+});
+
+
 var rezervareSchema= new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectID,
   email: String,
@@ -192,31 +203,6 @@ var rezervareSchema= new mongoose.Schema({
 })
 var Rezervare = mongoose.model("Rezervare", rezervareSchema);
 
-app.post('/addRezervare', (req, res) => {
-  console.log(req.body);
-  var rezervare = new Rezervare({
-    _id: mongoose.Types.ObjectId(),
-    email: req.body.mail,
-    carte: req.body.titlu,
-    data_imp: req.body.dataImprumut,
-    data_ret: req.body.dataRetur,
-  });
-  console.log(rezervare);
-  dbo.collection("rezervare").insertOne(rezervare, function (err, res) {
-    if (err) throw err;
-    console.log("rezervare entry created");
-  });
-})
-
-app.get("/getRezervare",(req, res, next) => {
-  dbo.collection("rezervare").find({}).toArray(function(err, rezervareFound) {
-    //console.log (mesajeFound);
-    if (err) throw err;
-    res.status(200).json({
-      mesaje: rezervareFound
-    });
-  });
-});
 
 var contactSchema= new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectID,
@@ -229,6 +215,7 @@ var contactSchema= new mongoose.Schema({
 var Contact = mongoose.model("Contact", contactSchema);
 
 app.post('/contactu', (req, res) => {
+  console.log(req.body);
   var contact = new Contact({
     _id: mongoose.Types.ObjectId(),
     email: req.body.email,
@@ -300,21 +287,6 @@ app.post('/addBook', (req, res) => {
   });
 });
 
-
-
-app.post('/addRezervare', (req, res) => {
-  var rezervare = new Rezervare({
-    _id: mongoose.Types.ObjectId(),
-    email: req.body[0].mail,
-    carte: req.body[0].titlu,
-    data_imp: req.body[0].dataImprumut,
-    data_ret: req.body[0].dataRetur,
-  });
-  dbo.collection("rezervare").insertOne(rezervare, function (err, res) {
-    if (err) throw err;
-    console.log("rezervare entry created");
-  });
-})
 
 
 app.get("/getRezervare",(req, res, next) => {
